@@ -1,9 +1,19 @@
 import { Injectable } from '@nestjs/common';
 
+export interface User {
+  name: string;
+  description: string;
+  done: boolean;
+}
+
 @Injectable()
 export class TasksService {
-  getTasks(): string[] {
-    return ['Task 1', 'Task 2', 'Task 3'];
+  getTasks(): User {
+    return {
+      name: 'Tarea 1',
+      description: 'Descripcion de la tarea 1',
+      done: false,
+    };
   }
 
   createTask(): string {
