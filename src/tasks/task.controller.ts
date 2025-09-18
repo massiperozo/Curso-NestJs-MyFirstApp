@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   Put,
@@ -19,6 +20,15 @@ export class TaskController {
     //Query para obtener parametros por url
     console.log(query);
     return this.tasksService.getTasks();
+  }
+
+  @Get('/:id') // Obtiene una tarea en específico
+  getTask(@Param('id') params: string): any {
+    //Con el decorador Param obtengo los parametros de la url
+    //Query para obtener parametros por url
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return this.tasksService.getTask(parseInt(params));
+    // El comentario de arriba es para desactivar la regla de eslint que me marca error por no validar el tipo de dato que retorna la funcion
   }
 
   @Post() // Crea una nueva tarea
