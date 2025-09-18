@@ -8,16 +8,18 @@ export interface User {
 
 @Injectable()
 export class TasksService {
-  getTasks(): User {
-    return {
-      name: 'Tarea 1',
-      description: 'Descripcion de la tarea 1',
-      done: false,
-    };
+  private task: any[] = []; // Arreglo para almacenar las tareas
+
+  getTasks(): any[] {
+    // Retorna todas las tareas
+    return this.task;
   }
 
-  createTask(): string {
-    return 'Creando una tarea';
+  createTask(task: any[]): any[] {
+    console.log(task);
+    // Crea una nueva tarea y la agrega al arreglo
+    this.task.push(task);
+    return this.task;
   }
 
   updateTask(): string {
